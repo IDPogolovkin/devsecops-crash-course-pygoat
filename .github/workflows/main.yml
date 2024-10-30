@@ -56,7 +56,9 @@ jobs:
        curl -fsSL https://raw.githubusercontent.com/docker/scout-cli/main/install.sh -o install-scout.sh
        sh install-scout.sh
        docker scout quickview
-       docker scout cves --only-severity critical,high --format sarif --output scout-report.sarif.json
+       docker scout cves
+  
+       # docker scout cves --only-severity critical,high --format sarif --output scout-report.sarif.json
 
    # - name: Docker Scout Scan
    #   uses: docker/scout-action@v1.0.9
@@ -67,12 +69,12 @@ jobs:
    #    only-severities: critical,high
    #    sarif-file: scout-report.sarif
 
-   - name: Upload Artifact
-     uses: actions/upload-artifact@v3
-     if: always()
-     with:
-      name: docker-scout-findings
-      path: scout-report.sarif.json
+   # - name: Upload Artifact
+   #   uses: actions/upload-artifact@v3
+   #   if: always()
+   #   with:
+   #    name: docker-scout-findings
+   #    path: scout-report.sarif.json
 
 
 
